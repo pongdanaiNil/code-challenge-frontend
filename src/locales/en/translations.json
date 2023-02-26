@@ -1,0 +1,37 @@
+{
+	"translation": {
+		"helloWorld": "hello world",
+
+		"default": {
+			"errors": {
+				"blank": "{{name}} is required.",
+				"tooLong": "{{name}} exceed {{number}} alphabet.",
+				"notmatch": "{{name}} not match with {{name2}}."
+			}
+		},
+		"signIn": {
+			"texts": {
+				"login": "Login",
+				"subLogin": "Please enter your details.",
+				"email": "Email",
+				"password": "Password"
+			},
+			"buttons": {
+				"signIn": "Login"
+			}
+		},
+		"signUp": {
+			"texts": {
+				"signUp": "Sign Up",
+				"subSignUp": "Please enter your details.",
+				"name": "Name",
+				"email": "Email",
+				"password": "Password",
+				"confirmPassword": "Confirm Password"
+			},
+			"buttons": {
+				"signUp": "Sign Up"
+			}
+		}
+	}
+}
