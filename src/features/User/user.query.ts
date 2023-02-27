@@ -1,4 +1,5 @@
 import { createApi } from '@reduxjs/toolkit/query/react'
+import toSnakeCaseKey from '@utils/snakeCaseKey'
 import { HYDRATE } from 'next-redux-wrapper'
 import customFetchBase from '../customFetchBase'
 
@@ -18,7 +19,7 @@ export const userAPI = createApi({
 				query: (body) => ({
 					url: '/api/v1/users/registration',
 					method: 'POST',
-					body: body
+					body: toSnakeCaseKey(body)
 				}),
 				invalidatesTags: ['User']
 			})

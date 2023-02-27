@@ -11,7 +11,6 @@ export default async function middleware(req: NextRequest) {
 		/\/favicon.ico/,
 		/\/serviceworker.js/,
 		/\/_next\/image/,
-		/\/signIn/,
 		/\/signUp/,
 	]
 
@@ -19,7 +18,7 @@ export default async function middleware(req: NextRequest) {
 		// return void 0;
 		return NextResponse.rewrite(url)
 	}
-	const ignorePath = ['/signIn']
+	const ignorePath = ['/signIn', '/signUp']
 	
 	if (!!accessToken && ignorePath.includes(url.pathname)) {
 		//have token

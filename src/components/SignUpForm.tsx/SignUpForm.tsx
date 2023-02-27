@@ -27,7 +27,7 @@ interface SignUpParam {
 	name: string
 	email: string
 	password: string
-	confirmPassword: string
+	passwordConfirmation: string
 }
 
 export default function SignInForm() {
@@ -40,7 +40,7 @@ export default function SignInForm() {
 		name: '',
 		email: '',
 		password: '',
-		confirmPassword: ''
+		passwordConfirmation: ''
 	}
 	const router = useRouter()
 
@@ -128,19 +128,19 @@ export default function SignInForm() {
 									placeholder="Password"
 								/>
 								<Typography variant="subtitle1" fontWeight="bold">
-									{t('signUp.texts.confirmPassword')}
+									{t('signUp.texts.passwordConfirmation')}
 								</Typography>
 								<FormControl sx={styles.pb30}>
 									<OutlinedInput
-										name="confirmPassword"
-										id="outlined-adornment-confirmPassword"
+										name="passwordConfirmation"
+										id="outlined-adornment-passwordConfirmation"
 										type={showPassword ? 'text' : 'password'}
 										onChange={formik.handleChange}
-										error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
+										error={formik.touched.passwordConfirmation && Boolean(formik.errors.passwordConfirmation)}
 										endAdornment={
 											<InputAdornment position="end">
 												<IconButton
-													aria-label="toggle confirmPassword visibility"
+													aria-label="toggle passwordConfirmation visibility"
 													onClick={handleClickShowPassword}
 													edge="end"
 												>
@@ -149,15 +149,15 @@ export default function SignInForm() {
 											</InputAdornment>
 										}
 										inputProps={{
-											'data-cy': 'confirmPassword',
+											'data-cy': 'passwordConfirmation',
 											maxLength: 255
 										}}
 										size="small"
 										placeholder="Confirm Password"
 									/>
-									{formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword) && (
-										<FormHelperText error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}>
-											{formik.touched.confirmPassword && formik.errors.confirmPassword}
+									{formik.touched.passwordConfirmation && Boolean(formik.errors.passwordConfirmation) && (
+										<FormHelperText error={formik.touched.passwordConfirmation && Boolean(formik.errors.passwordConfirmation)}>
+											{formik.touched.passwordConfirmation && formik.errors.passwordConfirmation}
 										</FormHelperText>
 									)}
 								</FormControl>

@@ -15,7 +15,7 @@ const validationSchema = yup.object({
 		.string()
 		.required(i18n.t('default.errors.blank', { name: 'Password' }) || '')
 		.max(255, i18n.t('default.errors.tooLong', { name: 'Password', number: 255 }) || ''),
-	confirmPassword: yup
+	passwordConfirmation: yup
 		.string()
 		.required(i18n.t('default.errors.blank', { name: 'Confirm Password' }) || '')
 		.max(255, i18n.t('default.errors.tooLong', { name: 'Confirm Password', number: 255 }) || '')

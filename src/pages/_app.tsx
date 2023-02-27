@@ -22,14 +22,6 @@ interface MyAppProps extends AppProps {
 const MyApp = ({ Component, ...rest}: MyAppProps) => {
   const notistackRef = createRef<SnackbarProvider>()
 
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) { return null }
-
   const { store, props } = wrapper.useWrappedStore(rest);
   const { emotionCache = cache, pageProps } = props;
 
