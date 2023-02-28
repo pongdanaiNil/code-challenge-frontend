@@ -38,7 +38,7 @@ const customFetchBase: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryEr
 			try {
 				const response = await baseQuery(
 					{
-						url: '/api/v1/refresh',
+						url: '/oauth/token',
 						method: 'POST',
 						body: { ...baseBody, refresh_token: getRefreshToken() }
 					},

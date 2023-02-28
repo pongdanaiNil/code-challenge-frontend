@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import SignUpForm from '@components/SignUpForm.tsx/SignUpForm'
+import SignUpForm from '@components/SignUpForm'
 import { useEffect, useState } from 'react'
 
 const SignUp: NextPage = () => {

@@ -53,7 +53,7 @@ export default function SignInForm() {
 		onSubmit: async (values) => {
 			try {
 				await signIn(values).unwrap()
-				router.push('/')
+				router.push('/keywords')
 			} catch (error: any) {
 				console.log("error", error)
 				enqueueSnackbar(error.data.error, { variant: 'error' })

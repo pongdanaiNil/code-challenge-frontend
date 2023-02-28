@@ -8,10 +8,22 @@
 			},
 			"buttons": {
 				"signOut": "Sign Out",
-				"search": "Search"
+				"search": "Search",
+				"back": "Back"
 			},
 			"drawers": {
-				"keywords": "Keywords"
+				"keywords": "Keywords",
+				"home": "Home"
+			}
+		},
+		"dialog": {
+			"texts": {
+				"uploadCSV": "Upload CSV file",
+				"uploading": "While uploading data, please wait a moment and refresh after a while."
+			},
+			"buttons": {
+				"upload": "Upload",
+				"confirm": "Confirm"
 			}
 		},
 		"signIn": {
@@ -48,6 +60,19 @@
 			"texts": {
 				"keyword": "Keywords",
 				"search": "Search from keyword"
+			},
+			"buttons": {
+				"upload": "Upload CSV file"
+			}
+		},
+		"result": {
+			"texts": {
+				"keyword": "Keyword",
+				"result": "Result",
+				"ads": "number of AdWords advertisers",
+				"link": "number of links",
+				"totalResult": "Total search results",
+				"html": "HTML code"
 			}
 		}
 	}

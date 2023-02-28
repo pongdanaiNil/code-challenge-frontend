@@ -22,9 +22,13 @@ export const authSlice = createSlice({
 		}
 	},
 	extraReducers: (builder) => {
-		builder.addMatcher(authAPI.endpoints.signIn.matchFulfilled, (state, { payload }: PayloadAction<signInResponse>) => {
+		builder.addMatcher(authAPI.endpoints.signIn.matchFulfilled, (_, { payload }: PayloadAction<signInResponse>) => {
 			setAccessToken(payload.access_token)
 			setRefreshToken(payload.refresh_token)
+		}),
+		builder.addMatcher(authAPI.endpoints.signOut.matchFulfilled, (_, { payload }) => {
+			destroyAccessToken()
+			destroyRefreshToken()
 		})
 	}
 })

@@ -37,6 +37,12 @@ export interface Column {
 	path?: string
 }
 
+export interface KeywordsQuery {
+	keyword?: string
+	page: string
+	limit: string
+}
+
 export interface KeywordsData {
 	data: KeywordData[]
 	count: number
@@ -47,6 +53,19 @@ export interface KeywordData {
 	keyword: string
 }
 
+export interface KeywordDataWithResult {
+	data: {
+		id: number
+		keyword: string
+	}
+	result: {
+		adwords_advertisers_count: number
+		links_count: number
+		total_search_results: string
+		html_code: string
+	}
+}
+
 export interface SkeletonPaginateTableProps {
 	columns: Column[]
 	isFetching: boolean
@@ -54,4 +73,19 @@ export interface SkeletonPaginateTableProps {
 	page: number
 	debounceChange: (page: number, perPage: number) => void
 	tableData?: KeywordsData
+}
+
+export interface ResultFormProps {
+	keyword: string
+	adwordsAdvertisers: number
+	links: number
+	totalSearchResults: string
+	htmlCode: string
+}
+
+export interface ErrorResponse {
+	data: {
+		message: string
+	}
+	status: number
 }

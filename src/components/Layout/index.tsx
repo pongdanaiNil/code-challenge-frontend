@@ -23,6 +23,8 @@ import Link from 'next/link'
 import { destroyAccessToken } from '@utils/authCookie'
 import styles from './style'
 import SettingsIcon from '@mui/icons-material/Settings';
+import { useSignOutMutation } from '@features/Auth'
+import { useSnackbar } from 'notistack'
 
 interface Props {
 	children?: ReactNode
@@ -47,6 +49,7 @@ export default function ApplicationLayout(props: Props) {
 	const DRAWER_WIDTH = 250
 	const router = useRouter()
 	const { t } = useTranslation()
+	const { enqueueSnackbar } = useSnackbar()
 	const { children, title = t('default.texts.appTitle') } = props
 	const [mobileOpen, setMobileOpen] = useState(false)
 	const [open, setOpen] = useState(true)
@@ -56,6 +59,8 @@ export default function ApplicationLayout(props: Props) {
 	const handleClick = (e: MouseEvent<HTMLButtonElement>) => setAnchorEl(e.currentTarget)
 	const handleClose = () => setAnchorEl(null)
 
+	const [signOut] = useSignOutMutation()
+
 	const handleDrawerToggle = () => {
 		setMobileOpen(!mobileOpen)
 	}
@@ -64,9 +69,13 @@ export default function ApplicationLayout(props: Props) {
 		setOpen(!open)
 	}
 
-	const onSignOut = () => {
-		destroyAccessToken()
-		router.push('/sign_in')
+	const onSignOut = async () => {
+		try {
+			await signOut().unwrap()
+			router.push('/sign_in')
+		} catch (error: any) {
+			enqueueSnackbar(error.data.error, { variant: 'error' })
+		}
 	}
 
 	const drawerMenu: DrawerMenu[] = [

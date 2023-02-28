@@ -2,14 +2,14 @@ import ApplicationLayout from '@components/Layout'
 import SkeletonPaginateTable from '@components/SkeletonPaginateTable'
 import { Button, debounce, Grid, InputAdornment, TextField, Typography } from '@mui/material'
 import styles from '@styles/keywords'
-import { SkeletonPaginateTableProps } from '@utils/interface'
+import { KeywordsQuery, SkeletonPaginateTableProps } from '@utils/interface'
 import { NextPage } from 'next'
-import { useRouter } from 'next/router'
-import { useSnackbar } from 'notistack'
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import SearchIcon from '@mui/icons-material/Search'
 import { useGetKeywordsQuery } from '@features/Keyword'
+import AddIcon from '@mui/icons-material/Add'
+import UploadDialog from '@components/Dialog'
 
 const Keywords: NextPage = () => {
   const [mounted, setMounted] = useState(false)
@@ -21,14 +21,18 @@ const Keywords: NextPage = () => {
   const { t } = useTranslation()
   const [search, setSearch] = useState('')
   const [page, setPage] = useState(0)
-  const [perPage, setPerPage] = useState(15)
-  const router = useRouter()
-  const { enqueueSnackbar } = useSnackbar()
+  const [perPage, setPerPage] = useState(5)
+  const [open, setOpen] = useState(false)
 
   const searchBoxRef = useRef<HTMLInputElement>(null)
 
-  const { data, isFetching } = useGetKeywordsQuery()
+  let query : KeywordsQuery = {
+    keyword: search,
+    page: page.toString(),
+    limit: perPage.toString()
+  }
 
+  const { data, isFetching } = useGetKeywordsQuery(query, { refetchOnMountOrArgChange: true })
 
   const debounceChange = debounce((page: number, perPage: number) => {
     setPage(page)
@@ -60,25 +64,28 @@ const Keywords: NextPage = () => {
     debounceChange: debounceChange
   }
 
+  const handleClose = () => setOpen(false)
+
   if (!mounted) { return null }
   return (
     <ApplicationLayout title='keywords'>
+      <UploadDialog open={open} handleClose={handleClose}/>
       <Grid container spacing={2}>
         <Grid item xs={12} md={8} lg={9}>
           <Typography sx={styles.boldText}>{t('keywords.texts.keyword')}</Typography>
         </Grid>
-        {/* <Grid item xs={12} md={4} lg={3} sx={styles.createButtonBox}>
+        <Grid item xs={12} md={4} lg={3} sx={styles.createButtonBox}>
           <Button
             variant="contained"
             color="primary"
-            onClick={onClickCreate}
-            name="create-user"
-            data-cy="create-user"
+            onClick={() => setOpen(true)}
+            name="upload-csv"
+            data-cy="upload-csv"
             startIcon={<AddIcon />}
           >
-            {t('user.buttons.create')}
+            {t('keywords.buttons.upload')}
           </Button>
-        </Grid> */}
+        </Grid>
         <Grid item xs={9} md={7}>
           <TextField
             inputRef={searchBoxRef}
