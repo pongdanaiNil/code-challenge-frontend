@@ -3,6 +3,7 @@ import { combinedReducer } from './features'
 import { createWrapper } from 'next-redux-wrapper'
 import { authAPI } from '@features/Auth/auth.query'
 import { userAPI } from '@features/User/user.query'
+import { keywordAPI } from '@features/Keyword/keyword.query'
 
 export const makeStore = () =>
 	configureStore({
@@ -10,7 +11,8 @@ export const makeStore = () =>
 		middleware: (getDefaultMiddleware) => {
 			return getDefaultMiddleware()
 			.concat(authAPI.middleware)
-				.concat(userAPI.middleware)
+			.concat(userAPI.middleware)
+			.concat(keywordAPI.middleware)
 		}
 	})
 

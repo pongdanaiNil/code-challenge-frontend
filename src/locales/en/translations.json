@@ -1,12 +1,17 @@
 {
 	"translation": {
-		"helloWorld": "hello world",
-
 		"default": {
 			"errors": {
 				"blank": "{{name}} is required.",
 				"tooLong": "{{name}} exceed {{number}} alphabet.",
 				"notmatch": "{{name}} not match with {{name2}}."
+			},
+			"buttons": {
+				"signOut": "Sign Out",
+				"search": "Search"
+			},
+			"drawers": {
+				"keywords": "Keywords"
 			}
 		},
 		"signIn": {
@@ -31,6 +36,18 @@
 			},
 			"buttons": {
 				"signUp": "Sign Up"
+			}
+		},
+		"keywords": {
+			"table": {
+				"head": {
+					"id": "ID",
+					"keyword": "Keyword"
+				}
+			},
+			"texts": {
+				"keyword": "Keywords",
+				"search": "Search from keyword"
 			}
 		}
 	}
