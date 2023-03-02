@@ -32,6 +32,7 @@ interface SignUpParam {
 
 export default function SignInForm() {
 	const [showPassword, setShowPassword] = useState(false)
+	const [showPasswordConfirmation, setShowPasswordConfirmation] = useState(false)
 	const { enqueueSnackbar } = useSnackbar()
 	const [signUp, { isLoading }] = useSignUpMutation()
 	const { t } = useTranslation()
@@ -46,6 +47,8 @@ export default function SignInForm() {
 
 	const handleClickShowPassword = () => setShowPassword((show) => !show)
 
+	const handleClickShowPasswordComfirmation = () => setShowPasswordConfirmation((show) => !show)
+
 	const handleClickLink = (e: MouseEvent<HTMLSpanElement>) => {
 		e.preventDefault()
 		router.push('/signIn')
@@ -56,7 +59,6 @@ export default function SignInForm() {
 		validationSchema: signUpValidationSchema,
 		onSubmit: async (values) => {
 			try {
-				console.log("values", values)
 				await signUp(values).unwrap()
 				router.push('/signIn')
 			} catch (error: any) {
@@ -114,19 +116,37 @@ export default function SignInForm() {
 								<Typography variant="subtitle1" fontWeight="bold">
 									{t('signUp.texts.password')}
 								</Typography>
-								<TextField
-									name="password"
-									onChange={formik.handleChange}
-									error={formik.touched.password && Boolean(formik.errors.password)}
-									helperText={formik.touched.password && formik.errors.password}
-									sx={{ pb: '20px' }}
-									inputProps={{
-										'data-cy': 'password',
-										maxLength: 255
-									}}
-									size="small"
-									placeholder="Password"
-								/>
+								<FormControl sx={styles.pb30}>
+									<OutlinedInput
+										name="password"
+										id="outlined-adornment-password"
+										type={showPassword ? 'text' : 'password'}
+										onChange={formik.handleChange}
+										error={formik.touched.password && Boolean(formik.errors.password)}
+										endAdornment={
+											<InputAdornment position="end">
+												<IconButton
+													aria-label="toggle password visibility"
+													onClick={handleClickShowPassword}
+													edge="end"
+												>
+													{showPassword ? <Visibility /> : <VisibilityOff />}
+												</IconButton>
+											</InputAdornment>
+										}
+										inputProps={{
+											'data-cy': 'password',
+											maxLength: 255
+										}}
+										size="small"
+										placeholder="Password"
+									/>
+									{formik.touched.password && Boolean(formik.errors.password) && (
+										<FormHelperText error={formik.touched.password && Boolean(formik.errors.password)}>
+											{formik.touched.password && formik.errors.password}
+										</FormHelperText>
+									)}
+								</FormControl>
 								<Typography variant="subtitle1" fontWeight="bold">
 									{t('signUp.texts.passwordConfirmation')}
 								</Typography>
@@ -134,17 +154,17 @@ export default function SignInForm() {
 									<OutlinedInput
 										name="passwordConfirmation"
 										id="outlined-adornment-passwordConfirmation"
-										type={showPassword ? 'text' : 'password'}
+										type={showPasswordConfirmation ? 'text' : 'password'}
 										onChange={formik.handleChange}
 										error={formik.touched.passwordConfirmation && Boolean(formik.errors.passwordConfirmation)}
 										endAdornment={
 											<InputAdornment position="end">
 												<IconButton
 													aria-label="toggle passwordConfirmation visibility"
-													onClick={handleClickShowPassword}
+													onClick={handleClickShowPasswordComfirmation}
 													edge="end"
 												>
-													{showPassword ? <Visibility /> : <VisibilityOff />}
+													{showPasswordConfirmation ? <Visibility /> : <VisibilityOff />}
 												</IconButton>
 											</InputAdornment>
 										}
