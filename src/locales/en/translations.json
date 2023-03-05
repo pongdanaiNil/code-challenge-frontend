@@ -72,7 +72,7 @@
 				"ads": "number of AdWords advertisers",
 				"link": "number of links",
 				"totalResult": "Total search results",
-				"html": "HTML code"
+				"page": "Result page"
 			}
 		}
 	}

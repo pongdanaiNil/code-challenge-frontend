@@ -1,7 +1,7 @@
 import BackButton from '@components/BackButton'
 import ApplicationLayout from '@components/Layout'
 import { useGetKeywordQuery } from '@features/Keyword'
-import { Skeleton } from '@mui/lab'
+import { Skeleton } from '@mui/material'
 import { Grid } from '@mui/material'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'

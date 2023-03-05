@@ -42,6 +42,9 @@ const styles = {
 	},
 	skeleton: {
 		height: '40px'
+	},
+	htmlPanel: {
+		position: 'relative'
 	}
 }
 export default styles
