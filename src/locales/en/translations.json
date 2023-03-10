@@ -1,0 +1,79 @@
+{
+	"translation": {
+		"default": {
+			"errors": {
+				"blank": "{{name}} is required.",
+				"tooLong": "{{name}} exceed {{number}} alphabet.",
+				"notmatch": "{{name}} not match with {{name2}}."
+			},
+			"buttons": {
+				"signOut": "Sign Out",
+				"search": "Search",
+				"back": "Back"
+			},
+			"drawers": {
+				"keywords": "Keywords",
+				"home": "Home"
+			}
+		},
+		"dialog": {
+			"texts": {
+				"uploadCSV": "Upload CSV file",
+				"uploading": "While uploading data, please wait a moment and refresh after a while."
+			},
+			"buttons": {
+				"upload": "Upload",
+				"confirm": "Confirm"
+			}
+		},
+		"signIn": {
+			"texts": {
+				"login": "Login",
+				"subLogin": "Please enter your details.",
+				"email": "Email",
+				"password": "Password"
+			},
+			"buttons": {
+				"signIn": "Login"
+			}
+		},
+		"signUp": {
+			"texts": {
+				"signUp": "Sign Up",
+				"subSignUp": "Please enter your details.",
+				"name": "Name",
+				"email": "Email",
+				"password": "Password",
+				"passwordConfirmation": "Confirm Password"
+			},
+			"buttons": {
+				"signUp": "Sign Up"
+			}
+		},
+		"keywords": {
+			"table": {
+				"head": {
+					"id": "ID",
+					"keyword": "Keyword"
+				}
+			},
+			"texts": {
+				"keyword": "Keywords",
+				"search": "Search from keyword"
+			},
+			"buttons": {
+				"upload": "Upload CSV file"
+			}
+		},
+		"result": {
+			"texts": {
+				"keyword": "Keyword",
+				"result": "Result",
+				"ads": "number of AdWords advertisers",
+				"link": "number of links",
+				"totalResult": "Total search results",
+				"page": "Result page"
+			}
+		}
+	}
+}
